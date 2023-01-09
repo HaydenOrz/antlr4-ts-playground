@@ -1,0 +1,29 @@
+{
+  "name": "antlr4-parser-demo",
+  "version": "0.0.1",
+  "main": "dist/index.js",
+  "scripts": {
+    "antlr4": "node build/antlr4.js",
+    "build": "rm -rf dist && tsc",
+    "eslint": "eslint ./src/**/*.ts",
+    "check-types": "tsc --skipLibCheck",
+    "test": "jest",
+    "release": "npm run build && standard-version --infile CHANGELOG.md"
+  },
+  "license": "MIT",
+  "devDependencies": {
+    "@types/jest": "^24.0.13",
+    "@typescript-eslint/eslint-plugin": "^3.10.1",
+    "@typescript-eslint/parser": "^3.10.1",
+    "eslint": "^7.7.0",
+    "eslint-config-google": "^0.14.0",
+    "jest": "^24.8.0",
+    "ts-jest": "^24.1.0",
+    "typescript": "^3.6.3"
+  },
+  "dependencies": {
+    "@types/antlr4": "4.7.0",
+    "antlr4": "4.7.2",
+    "standard-version": "^9.1.0"
+  }
+}

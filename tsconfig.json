@@ -1,0 +1,26 @@
+{
+    "compilerOptions": {
+        "outDir": "./dist/",
+        "sourceMap": true,
+        "allowJs":true,
+        "target": "es6",
+        "module": "commonjs",
+        "noUnusedLocals": true,
+        "noUnusedParameters": false,
+        "skipLibCheck": true,
+        "typeRoots": [
+            "node",
+            "node_modules/@types",
+            "./src/typings"
+        ]
+
+    },
+    "include": [
+        "./src/**/*"
+    ],
+    "typeAcquisition": {
+        "include": [
+            "jest"
+        ]
+    }
+}
