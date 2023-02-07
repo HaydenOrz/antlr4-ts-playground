@@ -6,15 +6,16 @@ const grammars = path.resolve(__dirname, '../src/grammar');
 const output = path.resolve(__dirname, '../src/lib');
 
 const entry = [
-    'hello',
+    'json',
+    'calculator',
+    'expr',
 ];
 
 entry.forEach((language) => {
     const cmd = `
-        java -jar ${antlr4}
-        -Dlanguage=JavaScript 
-        -visitor
+        antlr4ts
         -listener
+        -visitor
         -o ${output}/${language}
         ${grammars}/${language}/*.g4 
     `.replace(/\n/g, '');
