@@ -1,4 +1,4 @@
-// Generated from /Users/hayden/Desktop/antlr/antlr4-parser-demo/src/grammar/json/Json.g4 by ANTLR 4.9.0-SNAPSHOT
+// Generated from /Users/hayden/Desktop/antlr/antlr4-playground/src/grammar/json/Json.g4 by ANTLR 4.9.0-SNAPSHOT
 
 
 import { ATN } from "antlr4ts/atn/ATN";

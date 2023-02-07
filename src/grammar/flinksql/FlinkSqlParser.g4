@@ -8,12 +8,22 @@ statement
     : sqlStatements EOF
     ;
 
+
+// 这里与dt-sql-parser 中的grammar不同，将 分号的识别放到了 sqlStatement内部
+// dt sql parser 中的
+// sqlStatements
+//     : (sqlStatement SEMICOLON? | emptyStatement)*
+//     ;
+
+// sqlStatement
+//     : ddlStatement | dmlStatement | describeStatement | explainStatement | useStatement | showStatememt
+//     ;
 sqlStatements
-    : (sqlStatement SEMICOLON? | emptyStatement)*
+    : (sqlStatement | emptyStatement)*
     ;
 
 sqlStatement
-    : ddlStatement | dmlStatement | describeStatement | explainStatement | useStatement | showStatememt
+    : ddlStatement SEMICOLON? | dmlStatement SEMICOLON? | describeStatement SEMICOLON? | explainStatement SEMICOLON? | useStatement SEMICOLON? | showStatememt SEMICOLON?
     ;
 
 emptyStatement
