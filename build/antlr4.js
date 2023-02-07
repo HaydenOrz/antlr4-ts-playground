@@ -1,14 +1,13 @@
 const path = require('path');
 const exec = require('child_process').exec;
 
-const antlr4 = path.resolve(__dirname, 'antlr-4.8-complete.jar');
 const grammars = path.resolve(__dirname, '../src/grammar');
 const output = path.resolve(__dirname, '../src/lib');
 
 const entry = [
     'json',
     'calculator',
-    'expr',
+    'flinksql',
 ];
 
 entry.forEach((language) => {
