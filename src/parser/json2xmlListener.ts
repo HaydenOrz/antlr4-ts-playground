@@ -1,5 +1,5 @@
-import { JsonContext, EmptyArrayContext, AtomContext } from '@/lib/json/JsonParser';
-import { JsonListener } from '@/lib/json/JsonListener';
+import { JsonContext, EmptyArrayContext, AtomContext } from '../lib/json/JsonParser';
+import { JsonListener } from '../lib/json/JsonListener';
 
 
 export default class JSON2XMLListener implements JsonListener {
@@ -36,8 +36,7 @@ export default class JSON2XMLListener implements JsonListener {
 
     exitPair(ctx) {
         const tag = this.stripQuotes(ctx.STRING().text);
-        const res = `
-        <${tag}>${this.getXml(ctx.value())}<${tag}>`;
+        const res = `<${tag}>${this.getXml(ctx.value())}<${tag}>`;
 
         this.setXml(ctx, res);
     }
@@ -62,7 +61,6 @@ export default class JSON2XMLListener implements JsonListener {
     }
 
     exitAtom(ctx: AtomContext) {
-        console.log(ctx.text);
         this.setXml(ctx, ctx.text);
     }
 

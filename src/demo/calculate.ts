@@ -1,7 +1,7 @@
 import { ANTLRInputStream, CommonTokenStream } from 'antlr4ts';
-import { CalculatorLexer } from '@/lib/calculator/CalculatorLexer';
-import { CalculatorParser} from '@/lib/calculator/CalculatorParser';
-import CalculateByVisitor from '@/parser/calculatorVisitor';
+import { CalculatorLexer } from '../lib/calculator/CalculatorLexer';
+import { CalculatorParser} from '../lib/calculator/CalculatorParser';
+import CalculateByVisitor from '../parser/calculatorVisitor';
 
 function main() {
     function run(expr: string) {

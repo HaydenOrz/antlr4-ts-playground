@@ -1,8 +1,8 @@
 import { ANTLRInputStream, CommonTokenStream } from 'antlr4ts';
 import { ParseTreeWalker } from 'antlr4ts/tree';
-import { JsonLexer } from '@/lib/json/JsonLexer';
-import { JsonParser } from '@/lib/json/JsonParser';
-import JSON2XMLListener from '@/parser/json2xmlListener';
+import { JsonLexer } from '../lib/json/JsonLexer';
+import { JsonParser } from '../lib/json/JsonParser';
+import JSON2XMLListener from '../parser/json2xmlListener';
 
 function main(jsonStr) {
     const input = new ANTLRInputStream(jsonStr);
