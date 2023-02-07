@@ -1,11 +1,8 @@
-import { ANTLRInputStream, CommonTokenStream, Lexer } from 'antlr4ts';
-import { ParseTreeWalker } from 'antlr4ts/tree';
-import { JsonLexer } from '../lib/json/JsonLexer';
-import { JsonParser, JsonContext, EmptyArrayContext, AtomContext } from '../lib/json/JsonParser';
-import { JsonListener } from '../lib/json/JsonListener';
+import { JsonContext, EmptyArrayContext, AtomContext } from '@/lib/json/JsonParser';
+import { JsonListener } from '@/lib/json/JsonListener';
 
 
-export class JSON2XMLListener implements JsonListener {
+export default class JSON2XMLListener implements JsonListener {
     xmlMap = new Map();
 
     setXml(node, value) {
@@ -77,32 +74,3 @@ export class JSON2XMLListener implements JsonListener {
         this.setXml(ctx, this.getXml(ctx.array()));
     }
 };
-
-function main(jsonStr) {
-    const input = new ANTLRInputStream(jsonStr);
-    const lexer = <unknown> new JsonLexer(input) as Lexer;
-    const tokens = new CommonTokenStream(lexer);
-    const parser = new JsonParser(tokens);
-    const parseTree: any = parser.json();
-
-
-    const walker = new ParseTreeWalker();
-    const listener: any = new JSON2XMLListener();
-    walker.walk(listener, parseTree);
-
-    const xml = listener.getXml(parseTree);
-    console.log(xml);
-}
-
-main(`
-{
-    "id" : 1,
-    "name" : "Li",
-    "scores" : {
-        "Chinese" : "95",
-        "English" : "85"
-    },
-    "array" : [1.2, 2.0e1, -3] 
-}
-`);
-
