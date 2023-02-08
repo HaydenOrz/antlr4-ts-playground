@@ -1,4 +1,4 @@
-import { ANTLRInputStream, CommonTokenStream } from 'antlr4ts';
+import { CharStreams, CommonTokenStream } from 'antlr4ts';
 import { ParseTreeWalker } from 'antlr4ts/tree';
 import { JsonLexer } from '../lib/json/JsonLexer';
 import { JsonParser } from '../lib/json/JsonParser';
@@ -6,7 +6,7 @@ import JSON2XMLListener from '../parser/json2xmlListener';
 import { json1 } from '../sqlSample/jsonSample';
 
 function main(jsonStr) {
-    const input = new ANTLRInputStream(jsonStr);
+    const input = CharStreams.fromString(jsonStr);
     const lexer = new JsonLexer(input);
     const tokens = new CommonTokenStream(lexer);
     const parser = new JsonParser(tokens);

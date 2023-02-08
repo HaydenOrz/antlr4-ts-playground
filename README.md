@@ -1,9 +1,5 @@
 # antlr4-ts-playground
 
-## Power By
-+ antlr4ts
-+ typescript
-
 ## 安装
 1. 下载本仓库
 ```shell
