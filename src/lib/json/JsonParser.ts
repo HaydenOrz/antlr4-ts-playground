@@ -1,4 +1,4 @@
-// Generated from /Users/hayden/Desktop/antlr/antlr4-playground/src/grammar/json/Json.g4 by ANTLR 4.9.0-SNAPSHOT
+// Generated from /Users/hayden/Desktop/antlr/antlr4-ts-playground/src/grammar/json/Json.g4 by ANTLR 4.9.0-SNAPSHOT
 
 
 import { ATN } from "antlr4ts/atn/ATN";
@@ -89,7 +89,7 @@ export class JsonParser extends Parser {
 		let _localctx: JsonContext = new JsonContext(this._ctx, this.state);
 		this.enterRule(_localctx, 0, JsonParser.RULE_json);
 		try {
-			this.state = 12;
+			this.state = 16;
 			this._errHandler.sync(this);
 			switch (this._input.LA(1)) {
 			case JsonParser.T__0:
@@ -97,13 +97,17 @@ export class JsonParser extends Parser {
 				{
 				this.state = 10;
 				this.object();
+				this.state = 11;
+				this.match(JsonParser.EOF);
 				}
 				break;
 			case JsonParser.T__4:
 				this.enterOuterAlt(_localctx, 2);
 				{
-				this.state = 11;
+				this.state = 13;
 				this.array();
+				this.state = 14;
+				this.match(JsonParser.EOF);
 				}
 				break;
 			default:
@@ -130,34 +134,34 @@ export class JsonParser extends Parser {
 		this.enterRule(_localctx, 2, JsonParser.RULE_object);
 		let _la: number;
 		try {
-			this.state = 27;
+			this.state = 31;
 			this._errHandler.sync(this);
 			switch ( this.interpreter.adaptivePredict(this._input, 2, this._ctx) ) {
 			case 1:
 				_localctx = new AnObjectContext(_localctx);
 				this.enterOuterAlt(_localctx, 1);
 				{
-				this.state = 14;
+				this.state = 18;
 				this.match(JsonParser.T__0);
-				this.state = 15;
+				this.state = 19;
 				this.pair();
-				this.state = 20;
+				this.state = 24;
 				this._errHandler.sync(this);
 				_la = this._input.LA(1);
 				while (_la === JsonParser.T__1) {
 					{
 					{
-					this.state = 16;
+					this.state = 20;
 					this.match(JsonParser.T__1);
-					this.state = 17;
+					this.state = 21;
 					this.pair();
 					}
 					}
-					this.state = 22;
+					this.state = 26;
 					this._errHandler.sync(this);
 					_la = this._input.LA(1);
 				}
-				this.state = 23;
+				this.state = 27;
 				this.match(JsonParser.T__2);
 				}
 				break;
@@ -166,9 +170,9 @@ export class JsonParser extends Parser {
 				_localctx = new EmptyObjectContext(_localctx);
 				this.enterOuterAlt(_localctx, 2);
 				{
-				this.state = 25;
+				this.state = 29;
 				this.match(JsonParser.T__0);
-				this.state = 26;
+				this.state = 30;
 				this.match(JsonParser.T__2);
 				}
 				break;
@@ -195,11 +199,11 @@ export class JsonParser extends Parser {
 		try {
 			this.enterOuterAlt(_localctx, 1);
 			{
-			this.state = 29;
+			this.state = 33;
 			this.match(JsonParser.STRING);
-			this.state = 30;
+			this.state = 34;
 			this.match(JsonParser.T__3);
-			this.state = 31;
+			this.state = 35;
 			this.value();
 			}
 		}
@@ -223,34 +227,34 @@ export class JsonParser extends Parser {
 		this.enterRule(_localctx, 6, JsonParser.RULE_array);
 		let _la: number;
 		try {
-			this.state = 46;
+			this.state = 50;
 			this._errHandler.sync(this);
 			switch ( this.interpreter.adaptivePredict(this._input, 4, this._ctx) ) {
 			case 1:
 				_localctx = new ArrayOfValuesContext(_localctx);
 				this.enterOuterAlt(_localctx, 1);
 				{
-				this.state = 33;
+				this.state = 37;
 				this.match(JsonParser.T__4);
-				this.state = 34;
+				this.state = 38;
 				this.value();
-				this.state = 39;
+				this.state = 43;
 				this._errHandler.sync(this);
 				_la = this._input.LA(1);
 				while (_la === JsonParser.T__1) {
 					{
 					{
-					this.state = 35;
+					this.state = 39;
 					this.match(JsonParser.T__1);
-					this.state = 36;
+					this.state = 40;
 					this.value();
 					}
 					}
-					this.state = 41;
+					this.state = 45;
 					this._errHandler.sync(this);
 					_la = this._input.LA(1);
 				}
-				this.state = 42;
+				this.state = 46;
 				this.match(JsonParser.T__5);
 				}
 				break;
@@ -259,9 +263,9 @@ export class JsonParser extends Parser {
 				_localctx = new EmptyArrayContext(_localctx);
 				this.enterOuterAlt(_localctx, 2);
 				{
-				this.state = 44;
+				this.state = 48;
 				this.match(JsonParser.T__4);
-				this.state = 45;
+				this.state = 49;
 				this.match(JsonParser.T__5);
 				}
 				break;
@@ -286,14 +290,14 @@ export class JsonParser extends Parser {
 		let _localctx: ValueContext = new ValueContext(this._ctx, this.state);
 		this.enterRule(_localctx, 8, JsonParser.RULE_value);
 		try {
-			this.state = 55;
+			this.state = 59;
 			this._errHandler.sync(this);
 			switch (this._input.LA(1)) {
 			case JsonParser.STRING:
 				_localctx = new StringContext(_localctx);
 				this.enterOuterAlt(_localctx, 1);
 				{
-				this.state = 48;
+				this.state = 52;
 				this.match(JsonParser.STRING);
 				}
 				break;
@@ -301,7 +305,7 @@ export class JsonParser extends Parser {
 				_localctx = new AtomContext(_localctx);
 				this.enterOuterAlt(_localctx, 2);
 				{
-				this.state = 49;
+				this.state = 53;
 				this.match(JsonParser.NUMBER);
 				}
 				break;
@@ -309,7 +313,7 @@ export class JsonParser extends Parser {
 				_localctx = new AtomContext(_localctx);
 				this.enterOuterAlt(_localctx, 3);
 				{
-				this.state = 50;
+				this.state = 54;
 				this.match(JsonParser.T__6);
 				}
 				break;
@@ -317,7 +321,7 @@ export class JsonParser extends Parser {
 				_localctx = new AtomContext(_localctx);
 				this.enterOuterAlt(_localctx, 4);
 				{
-				this.state = 51;
+				this.state = 55;
 				this.match(JsonParser.T__7);
 				}
 				break;
@@ -325,7 +329,7 @@ export class JsonParser extends Parser {
 				_localctx = new AtomContext(_localctx);
 				this.enterOuterAlt(_localctx, 5);
 				{
-				this.state = 52;
+				this.state = 56;
 				this.match(JsonParser.T__8);
 				}
 				break;
@@ -333,7 +337,7 @@ export class JsonParser extends Parser {
 				_localctx = new ObjectValueContext(_localctx);
 				this.enterOuterAlt(_localctx, 6);
 				{
-				this.state = 53;
+				this.state = 57;
 				this.object();
 				}
 				break;
@@ -341,7 +345,7 @@ export class JsonParser extends Parser {
 				_localctx = new ArrayValueContext(_localctx);
 				this.enterOuterAlt(_localctx, 7);
 				{
-				this.state = 54;
+				this.state = 58;
 				this.array();
 				}
 				break;
@@ -365,33 +369,34 @@ export class JsonParser extends Parser {
 	}
 
 	public static readonly _serializedATN: string =
-		"\x03\uC91D\uCABA\u058D\uAFBA\u4F53\u0607\uEA8B\uC241\x03\x0E<\x04\x02" +
+		"\x03\uC91D\uCABA\u058D\uAFBA\u4F53\u0607\uEA8B\uC241\x03\x0E@\x04\x02" +
 		"\t\x02\x04\x03\t\x03\x04\x04\t\x04\x04\x05\t\x05\x04\x06\t\x06\x03\x02" +
-		"\x03\x02\x05\x02\x0F\n\x02\x03\x03\x03\x03\x03\x03\x03\x03\x07\x03\x15" +
-		"\n\x03\f\x03\x0E\x03\x18\v\x03\x03\x03\x03\x03\x03\x03\x03\x03\x05\x03" +
-		"\x1E\n\x03\x03\x04\x03\x04\x03\x04\x03\x04\x03\x05\x03\x05\x03\x05\x03" +
-		"\x05\x07\x05(\n\x05\f\x05\x0E\x05+\v\x05\x03\x05\x03\x05\x03\x05\x03\x05" +
-		"\x05\x051\n\x05\x03\x06\x03\x06\x03\x06\x03\x06\x03\x06\x03\x06\x03\x06" +
-		"\x05\x06:\n\x06\x03\x06\x02\x02\x02\x07\x02\x02\x04\x02\x06\x02\b\x02" +
-		"\n\x02\x02\x02\x02A\x02\x0E\x03\x02\x02\x02\x04\x1D\x03\x02\x02\x02\x06" +
-		"\x1F\x03\x02\x02\x02\b0\x03\x02\x02\x02\n9\x03\x02\x02\x02\f\x0F\x05\x04" +
-		"\x03\x02\r\x0F\x05\b\x05\x02\x0E\f\x03\x02\x02\x02\x0E\r\x03\x02\x02\x02" +
-		"\x0F\x03\x03\x02\x02\x02\x10\x11\x07\x03\x02\x02\x11\x16\x05\x06\x04\x02" +
-		"\x12\x13\x07\x04\x02\x02\x13\x15\x05\x06\x04\x02\x14\x12\x03\x02\x02\x02" +
-		"\x15\x18\x03\x02\x02\x02\x16\x14\x03\x02\x02\x02\x16\x17\x03\x02\x02\x02" +
-		"\x17\x19\x03\x02\x02\x02\x18\x16\x03\x02\x02\x02\x19\x1A\x07\x05\x02\x02" +
-		"\x1A\x1E\x03\x02\x02\x02\x1B\x1C\x07\x03\x02\x02\x1C\x1E\x07\x05\x02\x02" +
-		"\x1D\x10\x03\x02\x02\x02\x1D\x1B\x03\x02\x02\x02\x1E\x05\x03\x02\x02\x02" +
-		"\x1F \x07\f\x02\x02 !\x07\x06\x02\x02!\"\x05\n\x06\x02\"\x07\x03\x02\x02" +
-		"\x02#$\x07\x07\x02\x02$)\x05\n\x06\x02%&\x07\x04\x02\x02&(\x05\n\x06\x02" +
-		"\'%\x03\x02\x02\x02(+\x03\x02\x02\x02)\'\x03\x02\x02\x02)*\x03\x02\x02" +
-		"\x02*,\x03\x02\x02\x02+)\x03\x02\x02\x02,-\x07\b\x02\x02-1\x03\x02\x02" +
-		"\x02./\x07\x07\x02\x02/1\x07\b\x02\x020#\x03\x02\x02\x020.\x03\x02\x02" +
-		"\x021\t\x03\x02\x02\x022:\x07\f\x02\x023:\x07\r\x02\x024:\x07\t\x02\x02" +
-		"5:\x07\n\x02\x026:\x07\v\x02\x027:\x05\x04\x03\x028:\x05\b\x05\x0292\x03" +
-		"\x02\x02\x0293\x03\x02\x02\x0294\x03\x02\x02\x0295\x03\x02\x02\x0296\x03" +
-		"\x02\x02\x0297\x03\x02\x02\x0298\x03\x02\x02\x02:\v\x03\x02\x02\x02\b" +
-		"\x0E\x16\x1D)09";
+		"\x03\x02\x03\x02\x03\x02\x03\x02\x03\x02\x05\x02\x13\n\x02\x03\x03\x03" +
+		"\x03\x03\x03\x03\x03\x07\x03\x19\n\x03\f\x03\x0E\x03\x1C\v\x03\x03\x03" +
+		"\x03\x03\x03\x03\x03\x03\x05\x03\"\n\x03\x03\x04\x03\x04\x03\x04\x03\x04" +
+		"\x03\x05\x03\x05\x03\x05\x03\x05\x07\x05,\n\x05\f\x05\x0E\x05/\v\x05\x03" +
+		"\x05\x03\x05\x03\x05\x03\x05\x05\x055\n\x05\x03\x06\x03\x06\x03\x06\x03" +
+		"\x06\x03\x06\x03\x06\x03\x06\x05\x06>\n\x06\x03\x06\x02\x02\x02\x07\x02" +
+		"\x02\x04\x02\x06\x02\b\x02\n\x02\x02\x02\x02E\x02\x12\x03\x02\x02\x02" +
+		"\x04!\x03\x02\x02\x02\x06#\x03\x02\x02\x02\b4\x03\x02\x02\x02\n=\x03\x02" +
+		"\x02\x02\f\r\x05\x04\x03\x02\r\x0E\x07\x02\x02\x03\x0E\x13\x03\x02\x02" +
+		"\x02\x0F\x10\x05\b\x05\x02\x10\x11\x07\x02\x02\x03\x11\x13\x03\x02\x02" +
+		"\x02\x12\f\x03\x02\x02\x02\x12\x0F\x03\x02\x02\x02\x13\x03\x03\x02\x02" +
+		"\x02\x14\x15\x07\x03\x02\x02\x15\x1A\x05\x06\x04\x02\x16\x17\x07\x04\x02" +
+		"\x02\x17\x19\x05\x06\x04\x02\x18\x16\x03\x02\x02\x02\x19\x1C\x03\x02\x02" +
+		"\x02\x1A\x18\x03\x02\x02\x02\x1A\x1B\x03\x02\x02\x02\x1B\x1D\x03\x02\x02" +
+		"\x02\x1C\x1A\x03\x02\x02\x02\x1D\x1E\x07\x05\x02\x02\x1E\"\x03\x02\x02" +
+		"\x02\x1F \x07\x03\x02\x02 \"\x07\x05\x02\x02!\x14\x03\x02\x02\x02!\x1F" +
+		"\x03\x02\x02\x02\"\x05\x03\x02\x02\x02#$\x07\f\x02\x02$%\x07\x06\x02\x02" +
+		"%&\x05\n\x06\x02&\x07\x03\x02\x02\x02\'(\x07\x07\x02\x02(-\x05\n\x06\x02" +
+		")*\x07\x04\x02\x02*,\x05\n\x06\x02+)\x03\x02\x02\x02,/\x03\x02\x02\x02" +
+		"-+\x03\x02\x02\x02-.\x03\x02\x02\x02.0\x03\x02\x02\x02/-\x03\x02\x02\x02" +
+		"01\x07\b\x02\x0215\x03\x02\x02\x0223\x07\x07\x02\x0235\x07\b\x02\x024" +
+		"\'\x03\x02\x02\x0242\x03\x02\x02\x025\t\x03\x02\x02\x026>\x07\f\x02\x02" +
+		"7>\x07\r\x02\x028>\x07\t\x02\x029>\x07\n\x02\x02:>\x07\v\x02\x02;>\x05" +
+		"\x04\x03\x02<>\x05\b\x05\x02=6\x03\x02\x02\x02=7\x03\x02\x02\x02=8\x03" +
+		"\x02\x02\x02=9\x03\x02\x02\x02=:\x03\x02\x02\x02=;\x03\x02\x02\x02=<\x03" +
+		"\x02\x02\x02>\v\x03\x02\x02\x02\b\x12\x1A!-4=";
 	public static __ATN: ATN;
 	public static get _ATN(): ATN {
 		if (!JsonParser.__ATN) {
@@ -407,6 +412,7 @@ export class JsonContext extends ParserRuleContext {
 	public object(): ObjectContext | undefined {
 		return this.tryGetRuleContext(0, ObjectContext);
 	}
+	public EOF(): TerminalNode { return this.getToken(JsonParser.EOF, 0); }
 	public array(): ArrayContext | undefined {
 		return this.tryGetRuleContext(0, ArrayContext);
 	}

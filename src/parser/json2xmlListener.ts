@@ -1,14 +1,25 @@
-import { JsonContext, EmptyArrayContext, AtomContext } from '../lib/json/JsonParser';
+import { 
+    JsonContext,
+    EmptyArrayContext,
+    AtomContext,
+    AnObjectContext,
+    ArrayOfValuesContext,
+    ArrayValueContext,
+    EmptyObjectContext,
+    PairContext,
+    StringContext,
+    ObjectValueContext
+} from '../lib/json/JsonParser';
 import { JsonListener } from '../lib/json/JsonListener';
-
+import { ParseTree } from 'antlr4ts/tree';
 
 export default class JSON2XMLListener implements JsonListener {
     xmlMap = new Map();
 
-    setXml(node, value) {
+    setXml(node: ParseTree, value) {
         this.xmlMap.set(node, value);
     }
-    getXml(node) {
+    getXml(node: ParseTree) {
         this.xmlMap.get(node);
         return this.xmlMap.get(node);
     }
@@ -22,7 +33,7 @@ export default class JSON2XMLListener implements JsonListener {
         this.setXml(ctx, this.getXml(ctx.getChild(0)));
     }
 
-    exitAnObject(ctx) {
+    exitAnObject(ctx: AnObjectContext) {
         let str = '\n';
         ctx.pair().forEach((pairContext) => {
             str += this.xmlMap.get(pairContext);
@@ -30,18 +41,18 @@ export default class JSON2XMLListener implements JsonListener {
         this.setXml(ctx, str);
     }
 
-    exitEmptyObject(ctx) {
+    exitEmptyObject(ctx: EmptyObjectContext) {
         this.setXml(ctx, '');
     }
 
-    exitPair(ctx) {
+    exitPair(ctx: PairContext) {
         const tag = this.stripQuotes(ctx.STRING().text);
-        const res = `<${tag}>${this.getXml(ctx.value())}<${tag}>`;
+        const res = `<${tag}>${this.getXml(ctx.value())}<${tag}>\n`;
 
         this.setXml(ctx, res);
     }
 
-    exitArrayOfValues(ctx) {
+    exitArrayOfValues(ctx: ArrayOfValuesContext) {
         let res = '\n';
         ctx.value().forEach(valueContext => {
             res += '<element>';
@@ -56,7 +67,7 @@ export default class JSON2XMLListener implements JsonListener {
         this.setXml(ctx, '');
     }
 
-    exitString(ctx) {
+    exitString(ctx: StringContext) {
         this.setXml(ctx, this.stripQuotes(ctx.text));
     }
 
@@ -64,11 +75,11 @@ export default class JSON2XMLListener implements JsonListener {
         this.setXml(ctx, ctx.text);
     }
 
-    exitObjectValue(ctx) {
+    exitObjectValue(ctx: ObjectValueContext) {
         this.setXml(ctx, this.getXml(ctx.object()));
     }
 
-    exitArrayValue(ctx) {
+    exitArrayValue(ctx: ArrayValueContext) {
         this.setXml(ctx, this.getXml(ctx.array()));
     }
 };

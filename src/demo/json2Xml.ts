@@ -3,6 +3,7 @@ import { ParseTreeWalker } from 'antlr4ts/tree';
 import { JsonLexer } from '../lib/json/JsonLexer';
 import { JsonParser } from '../lib/json/JsonParser';
 import JSON2XMLListener from '../parser/json2xmlListener';
+import { json1 } from '../sqlSample/jsonSample';
 
 function main(jsonStr) {
     const input = new ANTLRInputStream(jsonStr);
@@ -20,15 +21,5 @@ function main(jsonStr) {
     console.log(xml);
 }
 
-main(`
-{
-    "id" : 1,
-    "name" : "Li",
-    "scores" : {
-        "Chinese" : "95",
-        "English" : "85"
-    },
-    "array" : [1.2, 2.0e1, -3] 
-}
-`);
+main(json1);
 

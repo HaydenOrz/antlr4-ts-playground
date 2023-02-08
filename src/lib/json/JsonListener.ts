@@ -1,4 +1,4 @@
-// Generated from /Users/hayden/Desktop/antlr/antlr4-playground/src/grammar/json/Json.g4 by ANTLR 4.9.0-SNAPSHOT
+// Generated from /Users/hayden/Desktop/antlr/antlr4-ts-playground/src/grammar/json/Json.g4 by ANTLR 4.9.0-SNAPSHOT
 
 
 import { ParseTreeListener } from "antlr4ts/tree/ParseTreeListener";
