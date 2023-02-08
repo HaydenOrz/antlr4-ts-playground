@@ -124,3 +124,8 @@ SELECT CUST_NO,
        BIZ_DATE
 FROM VIEWTABLE;
 `
+
+export const flinkSql2 = 
+`SELECT * FROM ;
+SHOW TAB;
+`
