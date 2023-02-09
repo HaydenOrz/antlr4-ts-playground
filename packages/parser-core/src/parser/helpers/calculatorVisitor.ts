@@ -1,6 +1,6 @@
 import { AbstractParseTreeVisitor } from 'antlr4ts/tree';
-import { MulContext, IntContext, AddContext } from '../lib/calculator/CalculatorParser';
-import { CalculatorVisitor } from '../lib/calculator/CalculatorVisitor';
+import { MulContext, IntContext, AddContext } from '../../lib/calculator/CalculatorParser';
+import { CalculatorVisitor } from '../../lib/calculator/CalculatorVisitor';
 
 export class CalculateByVisitor extends AbstractParseTreeVisitor<number> implements CalculatorVisitor<number> {
     visitAdd(ctx: AddContext) {

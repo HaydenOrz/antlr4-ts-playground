@@ -9,8 +9,8 @@ import {
     PairContext,
     StringContext,
     ObjectValueContext
-} from '../lib/json/JsonParser';
-import { JsonListener } from '../lib/json/JsonListener';
+} from '../../lib/json/JsonParser';
+import { JsonListener } from '../../lib/json/JsonListener';
 import { ParseTree } from 'antlr4ts/tree';
 
 export class JSON2XMLListener implements JsonListener {

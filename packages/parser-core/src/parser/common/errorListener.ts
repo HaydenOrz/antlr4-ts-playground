@@ -21,8 +21,3 @@ export interface SyntaxError<TSymbol extends Token  = Token, ATNInterpreter exte
     msg: string;
     e: RecognitionException | undefined;
 }
-
-export type ParserErrorHandler<
-    TSymbol extends Token = Token, 
-    ATNInterpreter extends ATNSimulator = any
-> = (err: ParserError, errOption: SyntaxError<TSymbol, ATNInterpreter>) => void;

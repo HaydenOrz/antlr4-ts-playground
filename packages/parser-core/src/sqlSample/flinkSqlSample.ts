@@ -1,14 +1,18 @@
 export const flinkSql1 = `
-SELECT * FROM AA; -- 第1段
+-- ******* 第1段 *********
+SELECT * FROM AA; 
 
 
-SHOW TABLES; -- 第2段
+-- ******* 第2段 *********
+SHOW TABLES; 
 
 
+-- ******* 第3段 *********
 DROP TABLE BB; -- 第3段
 
 
-CREATE TABLE USER_LOG -- 第4段
+-- ******* 第4段 *********
+CREATE TABLE USER_LOG
 (
     CUST_NO            BIGINT,
     CLICK_BANNER_FREQ  DECIMAL,
@@ -30,7 +34,8 @@ CREATE TABLE USER_LOG -- 第4段
       );
 
 
-CREATE TABLE SIDE1 -- 第5段
+-- ******* 第5段 *********
+CREATE TABLE SIDE1
 (
     CUST_NO            BIGINT,
     CLICK_BANNER_FREQ  DECIMAL,
@@ -58,8 +63,8 @@ CREATE TABLE SIDE1 -- 第5段
       ASYNC.SIDE.CLIENTSHARE='TRUE'
       );
 
-
-CREATE TABLE SIDE2 -- 第6段
+-- ******* 第6段 *********
+CREATE TABLE SIDE2
 (
     CUST_NO            BIGINT,
     CLICK_BANNER_FREQ  DECIMAL,
@@ -88,7 +93,8 @@ CREATE TABLE SIDE2 -- 第6段
       );
 
 
-CREATE VIEW VIEWTABLE AS -- 第7段
+-- ******* 第7段 *********
+CREATE VIEW VIEWTABLE AS
 SELECT ST.CUST_NO,
        MST.CLICK_BANNER_FREQ,
        MST2.CLICK_ARTICLE_FREQ,
@@ -103,7 +109,8 @@ FROM USER_LOG ST
      ON ST.CUST_NO = MST2.CUST_NO;
 
 
-CREATE TABLE SINK2 -- 第8段
+-- ******* 第8段 *********
+CREATE TABLE SINK2
 (
     CUST_NO            BIGINT,
     CLICK_BANNER_FREQ  DECIMAL,
@@ -115,7 +122,8 @@ CREATE TABLE SINK2 -- 第8段
       );
 
 
-INSERT -- 第9段
+-- ******* 第9段 *********      
+INSERT
 INTO SINK2
 SELECT CUST_NO,
        CLICK_BANNER_FREQ,
