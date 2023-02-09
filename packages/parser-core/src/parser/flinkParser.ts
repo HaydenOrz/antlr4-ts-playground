@@ -2,7 +2,7 @@ import { CommonTokenStream, CharStreams  } from 'antlr4ts';
 import { ParseTreeWalker } from 'antlr4ts/tree';
 import { CodeCompletionCore } from "antlr4-c3";
 import { FlinkSqlLexer } from '../lib/flinksql/FlinkSqlLexer';
-import { FlinkSqlParser } from '../lib/flinksql/FlinkSqlParser';
+import { FlinkSqlParser, ProgramContext } from '../lib/flinksql/FlinkSqlParser';
 import { FlinkSqlParserListener } from '../lib/flinksql/FlinkSqlParserListener'
 import { FlinkSqlSplitListener } from './helpers/flinkSql/splitFlinkSqlListener'
 import { FlinkParserErrorListener } from "./helpers/flinkSql/flinkParserErrorListener";
@@ -10,7 +10,27 @@ import { FlinkParserErrorListener } from "./helpers/flinkSql/flinkParserErrorLis
 export class FlinkParser {
     private _lexer: FlinkSqlLexer = null;
     private _parser: FlinkSqlParser = null;
+    private _ast: ProgramContext = null;
     private _errorListener: FlinkParserErrorListener = null;
+
+    get lexer () {
+        return this._lexer
+    }
+
+    get parser () {
+        return this._parser
+    }
+
+    get ast () {
+        return this._ast
+    }
+
+    get errors () {
+        return {
+            syntaxErrors: this._errorListener.syntaxErrors,
+            parserErrors: this._errorListener.parserErrors
+        }
+    }
 
     private createLexer(input: string) {
         const inputStream = CharStreams.fromString(input);
@@ -33,30 +53,25 @@ export class FlinkParser {
     dispose () {
         this._lexer = null;
         this._parser = null;
+        this._ast = null
         this._errorListener = null;
     }
 
-    get lexer () {
-        return this._lexer
-    }
-
-    get parser () {
-        return this._parser
-    }
-
-    get errors () {
+    parse (sql: string) {
+        const parser = this.createParser(sql)
+        this._parser = parser
+        this._ast = parser.program();
         return {
-            syntaxErrors: this._errorListener.syntaxErrors,
-            parserErrors: this._errorListener.syntaxErrors
+            ast: this._ast,
+            errors: this.errors
         }
     }
 
-    split (sql: string) {
-        const parser = this.createParser(sql)
-        const parseTree = parser.program();
+    split(sql: string) {
+        const { ast } = this.parse(sql)
         const walker = new ParseTreeWalker();
         const listener = new FlinkSqlSplitListener();
-        walker.walk(listener as FlinkSqlParserListener, parseTree);
+        walker.walk(listener as FlinkSqlParserListener, ast);
 
         return {
             positions: listener.sqlStatementsPosition,
@@ -65,10 +80,9 @@ export class FlinkParser {
     }
 
     getSuggestionListAtSyntaxErrors(sql: string) {
-        const parser = this.createParser(sql)
-        const core = new CodeCompletionCore(parser);
-        parser.program();
-        
+        const { errors } = this.parse(sql)
+        const core = new CodeCompletionCore(this._parser);
+
         /**
          * suggestTokenMap
          * key 插入位置
@@ -76,15 +90,18 @@ export class FlinkParser {
          */
         const suggestTokenMap: Map<number, string[]> = new Map()
 
-        this._errorListener.syntaxErrors.forEach(syntaxError => {
+        errors.syntaxErrors.forEach(syntaxError => {
             const candidates = core.collectCandidates(syntaxError.offendingSymbol.tokenIndex);
             const insertIndex = syntaxError.offendingSymbol.startIndex;
+
             if(!suggestTokenMap.has(insertIndex)) {
                 suggestTokenMap.set(insertIndex, [])
             }
+
             for (let candidate of candidates.tokens) {
-                suggestTokenMap.get(insertIndex).push(parser.vocabulary.getDisplayName(candidate[0]));
+                suggestTokenMap.get(insertIndex).push(this._parser.vocabulary.getDisplayName(candidate[0]));
             }
+
         })
 
         return suggestTokenMap

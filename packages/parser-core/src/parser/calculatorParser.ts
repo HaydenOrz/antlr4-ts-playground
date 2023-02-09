@@ -1,13 +1,14 @@
 import { FlinkSqlLexer } from "@/lib/flinksql/FlinkSqlLexer";
 import { CharStreams, CommonTokenStream } from "antlr4ts";
 import { CalculatorLexer } from "../lib/calculator/CalculatorLexer";
-import { CalculatorParser as CalculatorBaseParser } from "../lib/calculator/CalculatorParser";
+import { CalculatorParser as CalculatorBaseParser, CalContext } from "../lib/calculator/CalculatorParser";
 import { CalculateByVisitor } from "./helpers/calculatorVisitor";
 
 
 export class CalculatorParser {
     private _lexer: FlinkSqlLexer = null;
     private _parser: CalculatorBaseParser = null;
+    private _ast: CalContext = null;
 
     private createLexer(input: string) {
         const inputStream = CharStreams.fromString(input);
@@ -38,11 +39,20 @@ export class CalculatorParser {
         return this._parser
     }
 
+    parse (sql: string) {
+        this.dispose()
+        const parser = this.createParser(sql)
+        this._parser = parser
+        this._ast = parser.cal();
+        return {
+            ast: this._ast,
+        }
+    }
+
     calculate (expr: string) {
-        const parser = this.createParser(expr)
-        const tree = parser.cal();
+        const { ast } = this.parse(expr)
         const visitor = new CalculateByVisitor();
-        const res = visitor.visit(tree);
+        const res = visitor.visit(ast);
         return res
     }
 }
