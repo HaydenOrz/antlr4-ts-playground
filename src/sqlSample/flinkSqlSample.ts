@@ -126,6 +126,11 @@ FROM VIEWTABLE;
 `
 
 export const flinkSql2 = 
-`SELECT * FROM ;
-SHOW TAB;
+`CREATE  (
+    window_time BIGINT,
+    topic STRING,
+    bid_word_count BIGINT
+  ) WITH (
+    ""
+  );
 `
