@@ -19,6 +19,7 @@
         "typescript": "^4.7.4"
     },
     "scripts": {
-        "core": "yarn workspace @antlr-ts/parser-core"
+        "core": "yarn workspace @antlr-ts/parser-core",
+        "language": "yarn workspace @antlr-ts/monaco-languages"
     }
 }
