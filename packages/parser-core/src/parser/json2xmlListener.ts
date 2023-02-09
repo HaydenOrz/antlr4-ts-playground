@@ -13,7 +13,7 @@ import {
 import { JsonListener } from '../lib/json/JsonListener';
 import { ParseTree } from 'antlr4ts/tree';
 
-export default class JSON2XMLListener implements JsonListener {
+export class JSON2XMLListener implements JsonListener {
     xmlMap = new Map();
 
     setXml(node: ParseTree, value) {

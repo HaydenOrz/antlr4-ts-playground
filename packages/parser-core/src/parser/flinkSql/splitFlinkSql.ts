@@ -6,7 +6,7 @@ export interface IPosition {
     end?: number,
 }
 
-export default class FlinkSqlSplitListener implements FlinkSqlParserListener {
+export class FlinkSqlSplitListener implements FlinkSqlParserListener {
     private sqlStatementsPosition: IPosition[] = [];
 
     exitSqlStatements = (ctx: SqlStatementsContext) => {

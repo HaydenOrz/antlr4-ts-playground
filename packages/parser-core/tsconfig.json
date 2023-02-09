@@ -8,12 +8,12 @@
         "module": "commonjs",
         "noUnusedLocals": false,
         "noUnusedParameters": true,
+        "declaration": true,
         "strict": false,
         "skipLibCheck": true,
         "typeRoots": [
             "node",
             "node_modules/@types",
-            // "./src/typings"
         ],
         "paths": {
             "@/*": ["./src/*"],

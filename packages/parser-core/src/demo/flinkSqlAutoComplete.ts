@@ -2,7 +2,7 @@ import { CodeCompletionCore } from "antlr4-c3";
 import { CommonTokenStream, CharStreams } from 'antlr4ts';
 import { FlinkSqlLexer } from '../lib/flinksql/FlinkSqlLexer';
 import { FlinkSqlParser } from '../lib/flinksql/FlinkSqlParser';
-import FlinkParserErrorListener from "../parser/flinkSql/flinkParserErrorListener";
+import { FlinkParserErrorListener } from "../parser/flinkSql/flinkParserErrorListener";
 import { ParserErrorHandler } from '../parser/common/errorListener';
 import { flinkSql2 } from '../sqlSample/flinkSqlSample';
 

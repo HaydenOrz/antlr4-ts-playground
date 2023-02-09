@@ -8,7 +8,7 @@ import { ATNSimulator } from 'antlr4ts-sql';
 
 import { ParserErrorHandler } from '../common/errorListener';
 
-export default class FlinkParserErrorListener<TSymbol extends Token = Token, ATNInterpreter extends ATNSimulator = any> implements ParserErrorListener {
+export class FlinkParserErrorListener<TSymbol extends Token = Token, ATNInterpreter extends ATNSimulator = any> implements ParserErrorListener {
     private _errorHandler;
 
     constructor(errorListener: ParserErrorHandler) {

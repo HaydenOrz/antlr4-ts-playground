@@ -2,7 +2,7 @@ import { CharStreams, CommonTokenStream } from 'antlr4ts';
 import { ParseTreeWalker } from 'antlr4ts/tree';
 import { JsonLexer } from '../lib/json/JsonLexer';
 import { JsonParser } from '../lib/json/JsonParser';
-import JSON2XMLListener from '../parser/json2xmlListener';
+import { JSON2XMLListener } from '../parser/json2xmlListener';
 import { json1 } from '../sqlSample/jsonSample';
 
 function main(jsonStr) {

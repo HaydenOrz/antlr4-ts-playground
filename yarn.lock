@@ -2553,6 +2553,11 @@ modify-values@^1.0.0:
   resolved "http://registry.npm.dtstack.com/modify-values/-/modify-values-1.0.1.tgz#b3939fa605546474e3e3e3c63d64bd43b4ee6022"
   integrity sha1-s5OfpgVUZHTj4+PGPWS9Q7TuYCI=
 
+monaco-editor-core@^0.31.0:
+  version "0.31.1"
+  resolved "https://registry.npmmirror.com/monaco-editor-core/-/monaco-editor-core-0.31.1.tgz#7dfde54f00a3894e87db6151b7c1333944727455"
+  integrity sha512-JdwqSmTJP10bhb7qc94ehWX0C1D2R2rwCHfm+5Vd2Oh0dwjfeCAWHDelnTZ+BVbGPCb+7ZGHZvG+oYZHdmuemg==
+
 ms@^2.1.1:
   version "2.1.2"
   resolved "https://registry.yarnpkg.com/ms/-/ms-2.1.2.tgz#d09d1f357b443f493382a8eb3ccd183872ae6009"
