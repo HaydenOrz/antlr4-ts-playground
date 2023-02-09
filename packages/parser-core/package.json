@@ -1,23 +1,23 @@
 {
-  "name": "@antlr-ts/parser-core",
-  "version": "0.0.1",
-  "main": "lib/index.js",
-  "scripts": {
-    "antlr4": "node build/antlr4.js",
-    "build": "rm -rf lib && tsc --outDir lib",
-    "check-types": "tsc --skipLibCheck",
-    "test": "jest",
-    "release": "npm run build && standard-version --infile CHANGELOG.md",
-    "dev": "rm -rf dist && tsc --watch"
-  },
-  "license": "MIT",
-  "devDependencies": {
-    "antlr4ts-cli": "^0.5.0-alpha.4"
-  },
-  "dependencies": {
-    "antlr4-c3": "^2.2.1",
-    "antlr4ts": "^0.5.0-alpha.4",
-    "antlr4ts-sql": "^1.1.0",
-    "standard-version": "^9.1.0"
-  }
+    "name": "@antlr-ts/parser-core",
+    "version": "0.0.1",
+    "main": "lib/index.js",
+    "packageManager": "pnpm@6.32.12",
+    "scripts": {
+        "antlr4": "node build/antlr4.js",
+        "build": "rm -rf lib && tsc --outDir lib",
+        "check-types": "tsc --skipLibCheck",
+        "test": "jest",
+        "release": "npm run build && standard-version --infile CHANGELOG.md",
+        "dev": "rm -rf dist && tsc --watch"
+    },
+    "license": "MIT",
+    "devDependencies": {
+        "antlr4ts-cli": "^0.5.0-alpha.4"
+    },
+    "dependencies": {
+        "antlr4-c3": "^2.2.1",
+        "antlr4ts": "^0.5.0-alpha.4",
+        "antlr4ts-sql": "^1.1.0"
+    }
 }

@@ -2,6 +2,7 @@
   "name": "@antlr-ts/monaco-languages",
   "version": "0.0.1",
   "main": "lib/index.js",
+  "packageManager": "pnpm@6.32.12",
   "scripts": {
     "build": "rm -rf lib && tsc",
     "check-types": "tsc --skipLibCheck",
@@ -9,6 +10,7 @@
   },
   "license": "MIT",
   "dependencies": {
-    "monaco-editor-core": "^0.31.0"
+    "monaco-editor-core": "^0.31.0",
+    "@antlr-ts/parser-core": "workspace:../parser-core"
   }
 }

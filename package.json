@@ -6,12 +6,7 @@
     "author": "hayden <hayden9653@gmail.com>",
     "private": true,
     "license": "MIT",
-    "packageManager": "yarn@3.0.0",
-    "workspaces": {
-        "packages": [
-            "packages/*"
-        ]
-    },
+    "packageManager": "pnpm@6.32.12",
     "devDependencies": {
         "@types/jest": "^28.1.2",
         "jest": "^28.1.2",
@@ -19,7 +14,7 @@
         "typescript": "^4.7.4"
     },
     "scripts": {
-        "core": "yarn workspace @antlr-ts/parser-core",
-        "language": "yarn workspace @antlr-ts/monaco-languages"
+        "core": "pnpm --filter ./packages/parser-core",
+        "language": "pnpm --filter ./packages/monaco-languages"
     }
 }
