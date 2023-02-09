@@ -1,6 +1,6 @@
 export const flinkSql1 = `
 -- ******* 第1段 *********
-SELECT * FROM AA; 
+SELECT * FROM AA;
 
 
 -- ******* 第2段 *********
