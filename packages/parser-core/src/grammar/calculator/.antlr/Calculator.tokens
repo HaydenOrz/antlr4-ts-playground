@@ -1,7 +1,0 @@
-MUL=1
-ADD=2
-INT=3
-NEWLINE=4
-WS=5
-'*'=1
-'+'=2
