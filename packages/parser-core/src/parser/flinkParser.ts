@@ -7,6 +7,13 @@ import { FlinkSqlParserListener } from '../lib/flinksql/FlinkSqlParserListener'
 import { FlinkSqlSplitListener } from './helpers/flinkSql/splitFlinkSqlListener'
 import { FlinkParserErrorListener } from "./helpers/flinkSql/flinkParserErrorListener";
 
+/**
+ * ICandidatesMap
+ * key 插入位置
+ * value 建议列表
+ */
+export type ICandidatesMap = Map<number, string[]>
+
 export class FlinkParser {
     private _lexer: FlinkSqlLexer = null;
     private _parser: FlinkSqlParser = null;
@@ -83,12 +90,7 @@ export class FlinkParser {
         const { errors } = this.parse(sql)
         const core = new CodeCompletionCore(this._parser);
 
-        /**
-         * suggestTokenMap
-         * key 插入位置
-         * value 建议列表
-         */
-        const suggestTokenMap: Map<number, string[]> = new Map()
+        const suggestTokenMap: ICandidatesMap = new Map()
 
         errors.syntaxErrors.forEach(syntaxError => {
             const candidates = core.collectCandidates(syntaxError.offendingSymbol.tokenIndex);
@@ -101,7 +103,6 @@ export class FlinkParser {
             for (let candidate of candidates.tokens) {
                 suggestTokenMap.get(insertIndex).push(this._parser.vocabulary.getDisplayName(candidate[0]));
             }
-
         })
 
         return suggestTokenMap

@@ -1,19 +1,25 @@
-import { WorkerManager } from './workerManager';
+import { Uri, IDisposable, languages } from 'monaco-editor-core';
+import { WorkerManager} from './workerManager';
 import { LanguageServiceDefaults } from './_.contribution';
-import * as languageFeatures from './languageFeatures';
-import { Uri, IDisposable } from 'monaco-editor-core';
+import DiagnosticsAdapter from './diagnosticsAdapter';
+import CompletionItemAdapter from './completionItemAdapter';
+import { WorkerAccessor, IWorker } from './basicWorker' 
 
-export function setupLanguageMode<T extends languageFeatures.IWorker>(
+export function setupLanguageMode<T extends IWorker>(
 	defaults: LanguageServiceDefaults
 ): IDisposable {
 	const disposables: IDisposable[] = [];
 	const providers: IDisposable[] = [];
 
-	const client = new WorkerManager(defaults);
-	disposables.push(client);
 
-	const worker: languageFeatures.WorkerAccessor<T> = (...uris: Uri[]): Promise<any> => {
-		return client.getLanguageServiceWorker(...uris);
+	const workerManager = new WorkerManager(defaults);
+	disposables.push(workerManager);
+
+	/**
+	 * 获取到 language worker 代理对象
+	 */
+	const worker: WorkerAccessor<T> = (...uris: Uri[]): Promise<any> => {
+		return workerManager.getLanguageServiceWorker(...uris);
 	};
 
 	function registerProviders(): void {
@@ -22,7 +28,11 @@ export function setupLanguageMode<T extends languageFeatures.IWorker>(
 		disposeAll(providers);
 
 		if (modeConfiguration.diagnostics) {
-			providers.push(new languageFeatures.DiagnosticsAdapter(languageId, worker, defaults));
+			providers.push(new DiagnosticsAdapter(languageId, worker, defaults));
+		}
+
+		if(modeConfiguration.completionItems) {
+			providers.push(languages.registerCompletionItemProvider(defaults.languageId, new CompletionItemAdapter(worker)));
 		}
 	}
 

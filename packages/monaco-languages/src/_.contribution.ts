@@ -82,6 +82,9 @@ export interface ICreateData {
 	languageId: string;
 }
 
+/**
+ * @description language 功能配置
+ */
 export interface ModeConfiguration {
 	/**
 	 * Defines whether the built-in completionItemProvider is enabled.
@@ -139,10 +142,16 @@ export interface ModeConfiguration {
 	readonly selectionRanges?: boolean;
 }
 
+/**
+ * 诊断/错误信息信息配置
+ */
 export interface DiagnosticsOptions {
 	readonly validate?: boolean;
 }
 
+/**
+ * language service defaults
+ */
 export interface LanguageServiceDefaults {
 	readonly languageId: string;
 	readonly onDidChange: IEvent<LanguageServiceDefaults>;
@@ -153,6 +162,9 @@ export interface LanguageServiceDefaults {
 }
 
 export class LanguageServiceDefaultsImpl implements LanguageServiceDefaults {
+	/**
+	 * 初始化一个事件派发器
+	 */
 	private _onDidChange = new Emitter<LanguageServiceDefaults>();
 	private _diagnosticsOptions!: DiagnosticsOptions;
 	private _modeConfiguration!: ModeConfiguration;
@@ -168,6 +180,9 @@ export class LanguageServiceDefaultsImpl implements LanguageServiceDefaults {
 		this.setModeConfiguration(modeConfiguration);
 	}
 
+	/**
+	 * 返回一个事件，用于收集事件回调函数
+	 */
 	get onDidChange(): IEvent<LanguageServiceDefaults> {
 		return this._onDidChange.event;
 	}

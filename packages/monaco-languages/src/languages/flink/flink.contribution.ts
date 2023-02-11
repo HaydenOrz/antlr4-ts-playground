@@ -13,7 +13,7 @@ registerLanguage({
 	id: languageId,
 	extensions: ['.flink'],
 	aliases: ['FlinkSQL'],
-	loader: () => import('./flink')
+	loader: () => import('./flink') // language 配置包括高亮等
 });
 
 const flinkDefaults: LanguageServiceDefaults = new LanguageServiceDefaultsImpl(
@@ -22,6 +22,14 @@ const flinkDefaults: LanguageServiceDefaults = new LanguageServiceDefaultsImpl(
 	modeConfigurationDefault
 );
 
+/**
+ * 当一个 language 第一次被使用时调用
+ */
 languages.onLanguage(languageId, () => {
+	/**
+	 * 设置/初始化 language 相关的功能
+	 */
 	import('../../setupLanguageMode').then((mode) => mode.setupLanguageMode(flinkDefaults));
 });
+
+console.log('******** Register Flink Language Success ! ******');

@@ -1,10 +1,8 @@
 import * as monaco from "monaco-editor-core";
 import { LanguageServiceDefaults } from './_.contribution';
-
-import Uri = monaco.Uri;
 import { FlinkWorker } from './languages/flink/FlinkWorker';
 
-const languageID = 'flink'
+import Uri = monaco.Uri;
 
 export class WorkerManager {
 	private _worker: monaco.editor.MonacoWebWorker<FlinkWorker> = null;
@@ -17,10 +15,13 @@ export class WorkerManager {
 	}
 
 	dispose () {
-		this._worker.dispose()
+		if(this._worker) {
+			this._worker.dispose()
+			this._worker = null;
+		}
 	}
 
-	private getClientproxy(): Promise<FlinkWorker> {
+	private getClientProxy(): Promise<FlinkWorker> {
 
 		if (!this._workerClientProxy) {
 			this._worker = monaco.editor.createWebWorker<FlinkWorker>({
@@ -28,7 +29,7 @@ export class WorkerManager {
 				label: this._defaults.languageId,
 				createData: {
 					languageSettings: this._defaults.diagnosticsOptions,
-					languageId: languageID,
+					languageId: this._defaults.languageId,
 				}
 			});
 
@@ -39,7 +40,7 @@ export class WorkerManager {
 	}
 
 	async getLanguageServiceWorker(...resources: Uri[]): Promise<FlinkWorker> {
-		const _client: FlinkWorker = await this.getClientproxy();
+		const _client: FlinkWorker = await this.getClientProxy();
 		await this._worker.withSyncedResources(resources)
 		return _client;
 	}

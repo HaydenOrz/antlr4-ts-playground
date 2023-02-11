@@ -1,18 +1,9 @@
 import { editor, Uri, IDisposable, MarkerSeverity } from 'monaco-editor-core';
-import { debounce, LanguageServiceDefaults } from './_.contribution';
 import { ParserError } from '@antlr-ts/parser-core';
+import { IWorker, WorkerAccessor } from './basicWorker'
+import { debounce, LanguageServiceDefaults } from './_.contribution';
 
-export interface WorkerAccessor<T> {
-	(first: Uri, ...more: Uri[]): Promise<T>;
-}
-
-export interface IWorker {
-	doValidation(uri: string): Promise<any>;
-	valid(code: string): Promise<any>;
-	parserTreeToString(code: string): Promise<any>;
-}
-
-export class DiagnosticsAdapter<T extends IWorker> {
+export default class DiagnosticsAdapter<T extends IWorker> {
 	private _disposables: IDisposable[] = [];
 	private _listener: { [uri: string]: IDisposable } = Object.create(null);
 
@@ -55,7 +46,6 @@ export class DiagnosticsAdapter<T extends IWorker> {
 				onModelAdd(event.model);
 			})
 		);
-
 		defaults.onDidChange((_) => {
 			editor.getModels().forEach((model) => {
 				if (model.getLanguageId() === this._languageId) {
@@ -100,7 +90,6 @@ export class DiagnosticsAdapter<T extends IWorker> {
 }
 
 function toDiagnostics(_resource: Uri, diag: ParserError): editor.IMarkerData {
-
 	return {
 		severity: MarkerSeverity.Error,
 		startLineNumber: diag.startLine,
