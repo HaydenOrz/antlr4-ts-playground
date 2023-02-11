@@ -15,6 +15,7 @@
     },
     "scripts": {
         "core": "pnpm --filter ./packages/parser-core",
-        "language": "pnpm --filter ./packages/monaco-languages"
+        "language": "pnpm --filter ./packages/monaco-languages",
+        "editor": "pnpm --filter ./packages/web-editor"
     }
 }
