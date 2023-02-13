@@ -1,4 +1,4 @@
-// Generated from /Users/hayden/Desktop/antlr/antlr4-ts-playground/src/grammar/calculator/Calculator.g4 by ANTLR 4.9.0-SNAPSHOT
+// Generated from /Users/hayden/Desktop/antlr/antlr4-ts-playground/packages/parser-core/src/grammar/calculator/Calculator.g4 by ANTLR 4.9.0-SNAPSHOT
 
 
 import { ParseTreeVisitor } from "antlr4ts/tree/ParseTreeVisitor";

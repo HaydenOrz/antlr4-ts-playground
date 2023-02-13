@@ -4,7 +4,7 @@
     "main": "lib/index.js",
     "packageManager": "pnpm@6.32.12",
     "scripts": {
-        "antlr4": "node build/antlr4.js",
+        "antlr4": "node scripts/antlr4.js",
         "build": "rm -rf lib && tsc --outDir lib",
         "check-types": "tsc --skipLibCheck",
         "test": "jest",
