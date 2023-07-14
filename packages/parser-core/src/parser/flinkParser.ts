@@ -1,4 +1,4 @@
-import { CommonTokenStream, CharStreams  } from 'antlr4ts';
+import { CommonTokenStream, CharStreams } from 'antlr4ts';
 import { ParseTreeWalker } from 'antlr4ts/tree';
 import { CodeCompletionCore } from "antlr4-c3";
 import { FlinkSqlLexer } from '../lib/flinksql/FlinkSqlLexer';

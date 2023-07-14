@@ -3,7 +3,7 @@ import {
     Recognizer,
     RecognitionException 
 } from 'antlr4ts';
-import { ATNSimulator } from 'antlr4ts-sql';
+import { ATNSimulator } from 'antlr4ts/atn/ATNSimulator'
 
 export interface ParserError {
     startLine: number;
