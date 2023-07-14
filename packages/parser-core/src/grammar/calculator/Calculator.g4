@@ -2,14 +2,30 @@ grammar Calculator;
  
 cal : expr;
  
-expr : expr MUL expr    # Mul
-     | expr ADD expr    # Add
-     | INT              # Int
+expr : expr ADD term    # addOperation
+     | expr SUB term    # subOperation
+     | term             # termItem
      ;
-MUL : '*';
+
+term : term MUL factor  # mulOperation
+     | term DIV factor  # divOperation
+     | factor           # factorItem
+     ;
+
+factor : DIGIT                  # digitFactor
+     | L_BRACKET expr R_BRACKET # compoundFactor
+     ;
+
 ADD : '+';
+SUB : '-';
+MUL : '*';
+DIV : '/';
+
+L_BRACKET : '(';
+R_BRACKET : ')';
+
  
-INT : '0' | [1-9][0-9]*;
-NEWLINE : '\r'?'\n';
+DIGIT : '0' | [1-9][0-9]*;
+NEWLINE : '\r'?'\n' -> channel(HIDDEN);
  
-WS : [ \t\n] -> skip;
+WS : [ \t\n] -> channel(HIDDEN);

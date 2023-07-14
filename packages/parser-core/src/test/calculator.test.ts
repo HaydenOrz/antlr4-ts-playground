@@ -1,19 +1,31 @@
 import { CalculatorParser } from "../parser/calculatorParser";
 
+const testCases = [
+    {
+        expr: '1+2*3 + 4+6+7',
+        value: 1+2*3+4+6+7,
+    },
+    {
+        expr: '1 + 2 + 3 + 6 * 7',
+        value: 1+2+3+6*7,
+    },
+    {
+        expr: '3+4*5+9+9*11',
+        value: 3+4*5+9+9*11,
+    },
+    {
+        expr: '4*(9-3)/6',
+        value: 4*(9-3)/6,
+    },
+];
+
 describe('Calculator Parser Tests', () => {
     const calculatorParser = new CalculatorParser();
 
-    test('Calculator Test1', () => {
-        const res = calculatorParser.calculate(`1+2*3 + 4+6+7`)
-        expect(res).toBe(1+2*3+4+6+7);
-    });
-
-    test('Calculator Test2', () => {
-        const res = calculatorParser.calculate(`1 + 2 + 3 + 6 * 7`)
-        expect(res).toBe(1+2+3+6*7);
-    });
-    test('Calculator Test3', () => {
-        const res = calculatorParser.calculate(`3+4*5+9+9*11`)
-        expect(res).toBe(3+4*5+9+9*11);
-    });
+    testCases.forEach(({ expr, value }) => {
+        it(expr, () => {
+            const res = calculatorParser.calculate(expr);
+            expect(res).toBe(value)
+        })
+    })
 });

@@ -3,11 +3,18 @@
 
 import { ParseTreeVisitor } from "antlr4ts/tree/ParseTreeVisitor";
 
-import { MulContext } from "./CalculatorParser";
-import { AddContext } from "./CalculatorParser";
-import { IntContext } from "./CalculatorParser";
+import { AddOperationContext } from "./CalculatorParser";
+import { SubOperationContext } from "./CalculatorParser";
+import { TermItemContext } from "./CalculatorParser";
+import { MulOperationContext } from "./CalculatorParser";
+import { DivOperationContext } from "./CalculatorParser";
+import { FactorItemContext } from "./CalculatorParser";
+import { DigitFactorContext } from "./CalculatorParser";
+import { CompoundFactorContext } from "./CalculatorParser";
 import { CalContext } from "./CalculatorParser";
 import { ExprContext } from "./CalculatorParser";
+import { TermContext } from "./CalculatorParser";
+import { FactorContext } from "./CalculatorParser";
 
 
 /**
@@ -19,28 +26,68 @@ import { ExprContext } from "./CalculatorParser";
  */
 export interface CalculatorVisitor<Result> extends ParseTreeVisitor<Result> {
 	/**
-	 * Visit a parse tree produced by the `Mul`
+	 * Visit a parse tree produced by the `addOperation`
 	 * labeled alternative in `CalculatorParser.expr`.
 	 * @param ctx the parse tree
 	 * @return the visitor result
 	 */
-	visitMul?: (ctx: MulContext) => Result;
+	visitAddOperation?: (ctx: AddOperationContext) => Result;
 
 	/**
-	 * Visit a parse tree produced by the `Add`
+	 * Visit a parse tree produced by the `subOperation`
 	 * labeled alternative in `CalculatorParser.expr`.
 	 * @param ctx the parse tree
 	 * @return the visitor result
 	 */
-	visitAdd?: (ctx: AddContext) => Result;
+	visitSubOperation?: (ctx: SubOperationContext) => Result;
 
 	/**
-	 * Visit a parse tree produced by the `Int`
+	 * Visit a parse tree produced by the `termItem`
 	 * labeled alternative in `CalculatorParser.expr`.
 	 * @param ctx the parse tree
 	 * @return the visitor result
 	 */
-	visitInt?: (ctx: IntContext) => Result;
+	visitTermItem?: (ctx: TermItemContext) => Result;
+
+	/**
+	 * Visit a parse tree produced by the `mulOperation`
+	 * labeled alternative in `CalculatorParser.term`.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	visitMulOperation?: (ctx: MulOperationContext) => Result;
+
+	/**
+	 * Visit a parse tree produced by the `divOperation`
+	 * labeled alternative in `CalculatorParser.term`.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	visitDivOperation?: (ctx: DivOperationContext) => Result;
+
+	/**
+	 * Visit a parse tree produced by the `factorItem`
+	 * labeled alternative in `CalculatorParser.term`.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	visitFactorItem?: (ctx: FactorItemContext) => Result;
+
+	/**
+	 * Visit a parse tree produced by the `digitFactor`
+	 * labeled alternative in `CalculatorParser.factor`.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	visitDigitFactor?: (ctx: DigitFactorContext) => Result;
+
+	/**
+	 * Visit a parse tree produced by the `compoundFactor`
+	 * labeled alternative in `CalculatorParser.factor`.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	visitCompoundFactor?: (ctx: CompoundFactorContext) => Result;
 
 	/**
 	 * Visit a parse tree produced by `CalculatorParser.cal`.
@@ -55,5 +102,19 @@ export interface CalculatorVisitor<Result> extends ParseTreeVisitor<Result> {
 	 * @return the visitor result
 	 */
 	visitExpr?: (ctx: ExprContext) => Result;
+
+	/**
+	 * Visit a parse tree produced by `CalculatorParser.term`.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	visitTerm?: (ctx: TermContext) => Result;
+
+	/**
+	 * Visit a parse tree produced by `CalculatorParser.factor`.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	visitFactor?: (ctx: FactorContext) => Result;
 }
 

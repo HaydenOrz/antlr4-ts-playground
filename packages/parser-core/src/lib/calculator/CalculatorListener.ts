@@ -3,11 +3,18 @@
 
 import { ParseTreeListener } from "antlr4ts/tree/ParseTreeListener";
 
-import { MulContext } from "./CalculatorParser";
-import { AddContext } from "./CalculatorParser";
-import { IntContext } from "./CalculatorParser";
+import { AddOperationContext } from "./CalculatorParser";
+import { SubOperationContext } from "./CalculatorParser";
+import { TermItemContext } from "./CalculatorParser";
+import { MulOperationContext } from "./CalculatorParser";
+import { DivOperationContext } from "./CalculatorParser";
+import { FactorItemContext } from "./CalculatorParser";
+import { DigitFactorContext } from "./CalculatorParser";
+import { CompoundFactorContext } from "./CalculatorParser";
 import { CalContext } from "./CalculatorParser";
 import { ExprContext } from "./CalculatorParser";
+import { TermContext } from "./CalculatorParser";
+import { FactorContext } from "./CalculatorParser";
 
 
 /**
@@ -16,43 +23,108 @@ import { ExprContext } from "./CalculatorParser";
  */
 export interface CalculatorListener extends ParseTreeListener {
 	/**
-	 * Enter a parse tree produced by the `Mul`
+	 * Enter a parse tree produced by the `addOperation`
 	 * labeled alternative in `CalculatorParser.expr`.
 	 * @param ctx the parse tree
 	 */
-	enterMul?: (ctx: MulContext) => void;
+	enterAddOperation?: (ctx: AddOperationContext) => void;
 	/**
-	 * Exit a parse tree produced by the `Mul`
+	 * Exit a parse tree produced by the `addOperation`
 	 * labeled alternative in `CalculatorParser.expr`.
 	 * @param ctx the parse tree
 	 */
-	exitMul?: (ctx: MulContext) => void;
+	exitAddOperation?: (ctx: AddOperationContext) => void;
 
 	/**
-	 * Enter a parse tree produced by the `Add`
+	 * Enter a parse tree produced by the `subOperation`
 	 * labeled alternative in `CalculatorParser.expr`.
 	 * @param ctx the parse tree
 	 */
-	enterAdd?: (ctx: AddContext) => void;
+	enterSubOperation?: (ctx: SubOperationContext) => void;
 	/**
-	 * Exit a parse tree produced by the `Add`
+	 * Exit a parse tree produced by the `subOperation`
 	 * labeled alternative in `CalculatorParser.expr`.
 	 * @param ctx the parse tree
 	 */
-	exitAdd?: (ctx: AddContext) => void;
+	exitSubOperation?: (ctx: SubOperationContext) => void;
 
 	/**
-	 * Enter a parse tree produced by the `Int`
+	 * Enter a parse tree produced by the `termItem`
 	 * labeled alternative in `CalculatorParser.expr`.
 	 * @param ctx the parse tree
 	 */
-	enterInt?: (ctx: IntContext) => void;
+	enterTermItem?: (ctx: TermItemContext) => void;
 	/**
-	 * Exit a parse tree produced by the `Int`
+	 * Exit a parse tree produced by the `termItem`
 	 * labeled alternative in `CalculatorParser.expr`.
 	 * @param ctx the parse tree
 	 */
-	exitInt?: (ctx: IntContext) => void;
+	exitTermItem?: (ctx: TermItemContext) => void;
+
+	/**
+	 * Enter a parse tree produced by the `mulOperation`
+	 * labeled alternative in `CalculatorParser.term`.
+	 * @param ctx the parse tree
+	 */
+	enterMulOperation?: (ctx: MulOperationContext) => void;
+	/**
+	 * Exit a parse tree produced by the `mulOperation`
+	 * labeled alternative in `CalculatorParser.term`.
+	 * @param ctx the parse tree
+	 */
+	exitMulOperation?: (ctx: MulOperationContext) => void;
+
+	/**
+	 * Enter a parse tree produced by the `divOperation`
+	 * labeled alternative in `CalculatorParser.term`.
+	 * @param ctx the parse tree
+	 */
+	enterDivOperation?: (ctx: DivOperationContext) => void;
+	/**
+	 * Exit a parse tree produced by the `divOperation`
+	 * labeled alternative in `CalculatorParser.term`.
+	 * @param ctx the parse tree
+	 */
+	exitDivOperation?: (ctx: DivOperationContext) => void;
+
+	/**
+	 * Enter a parse tree produced by the `factorItem`
+	 * labeled alternative in `CalculatorParser.term`.
+	 * @param ctx the parse tree
+	 */
+	enterFactorItem?: (ctx: FactorItemContext) => void;
+	/**
+	 * Exit a parse tree produced by the `factorItem`
+	 * labeled alternative in `CalculatorParser.term`.
+	 * @param ctx the parse tree
+	 */
+	exitFactorItem?: (ctx: FactorItemContext) => void;
+
+	/**
+	 * Enter a parse tree produced by the `digitFactor`
+	 * labeled alternative in `CalculatorParser.factor`.
+	 * @param ctx the parse tree
+	 */
+	enterDigitFactor?: (ctx: DigitFactorContext) => void;
+	/**
+	 * Exit a parse tree produced by the `digitFactor`
+	 * labeled alternative in `CalculatorParser.factor`.
+	 * @param ctx the parse tree
+	 */
+	exitDigitFactor?: (ctx: DigitFactorContext) => void;
+
+	/**
+	 * Enter a parse tree produced by the `compoundFactor`
+	 * labeled alternative in `CalculatorParser.factor`.
+	 * @param ctx the parse tree
+	 */
+	enterCompoundFactor?: (ctx: CompoundFactorContext) => void;
+	/**
+	 * Exit a parse tree produced by the `compoundFactor`
+	 * labeled alternative in `CalculatorParser.factor`.
+	 * @param ctx the parse tree
+	 */
+	exitCompoundFactor?: (ctx: CompoundFactorContext) => void;
 
 	/**
 	 * Enter a parse tree produced by `CalculatorParser.cal`.
@@ -75,5 +147,27 @@ export interface CalculatorListener extends ParseTreeListener {
 	 * @param ctx the parse tree
 	 */
 	exitExpr?: (ctx: ExprContext) => void;
+
+	/**
+	 * Enter a parse tree produced by `CalculatorParser.term`.
+	 * @param ctx the parse tree
+	 */
+	enterTerm?: (ctx: TermContext) => void;
+	/**
+	 * Exit a parse tree produced by `CalculatorParser.term`.
+	 * @param ctx the parse tree
+	 */
+	exitTerm?: (ctx: TermContext) => void;
+
+	/**
+	 * Enter a parse tree produced by `CalculatorParser.factor`.
+	 * @param ctx the parse tree
+	 */
+	enterFactor?: (ctx: FactorContext) => void;
+	/**
+	 * Exit a parse tree produced by `CalculatorParser.factor`.
+	 * @param ctx the parse tree
+	 */
+	exitFactor?: (ctx: FactorContext) => void;
 }
 
