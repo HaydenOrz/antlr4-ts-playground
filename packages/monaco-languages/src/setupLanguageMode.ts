@@ -1,4 +1,4 @@
-import { Uri, IDisposable, languages } from 'monaco-editor-core';
+import { Uri, IDisposable, languages } from 'monaco-editor';
 import { WorkerManager} from './workerManager';
 import { LanguageServiceDefaults } from './_.contribution';
 import DiagnosticsAdapter from './diagnosticsAdapter';

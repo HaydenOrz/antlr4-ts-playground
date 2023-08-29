@@ -1,4 +1,4 @@
-import * as monaco from "monaco-editor-core";
+import * as monaco from "monaco-editor";
 import { FlinkParser, ParserError } from '@antlr-ts/parser-core'
 import { IWorker } from '../../basicWorker'
 import IWorkerContext = monaco.worker.IWorkerContext;

@@ -3,7 +3,7 @@
  *  Licensed under the MIT License. See License.txt in the project root for license information.
  *--------------------------------------------------------------------------------------------*/
 
-import { languages, Emitter, IEvent } from 'monaco-editor-core';
+import { languages, Emitter, IEvent } from 'monaco-editor';
 
 interface ILang extends languages.ILanguageExtensionPoint {
 	loader: () => Promise<ILangImpl>;

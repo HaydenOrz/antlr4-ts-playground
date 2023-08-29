@@ -1,4 +1,4 @@
-import { Uri } from 'monaco-editor-core'
+import { Uri } from 'monaco-editor'
 import { ParserError } from '@antlr-ts/parser-core'
 import { ICandidatesMap } from '@antlr-ts/parser-core'
 

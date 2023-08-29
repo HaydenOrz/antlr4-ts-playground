@@ -5,11 +5,12 @@
     "license": "MIT",
     "packageManager": "pnpm@6.32.12",
     "scripts": {
-        "dev": "node --max_old_space_size=4092 & webpack serve --config ./webpack.config.js"
+        "dev": "node --max_old_space_size=4092 & webpack serve --config ./webpack.config.js",
+        "build": "node --max_old_space_size=4092 & webpack --config ./webpack.config.js"
     },
     "dependencies": {
         "@antlr-ts/monaco-languages": "workspace:../monaco-languages",
-        "monaco-editor-core": "^0.31.0"
+        "monaco-editor": "^0.31.1"
     },
     "devDependencies": {
         "assert": "^2.0.0",

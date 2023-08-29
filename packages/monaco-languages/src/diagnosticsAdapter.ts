@@ -1,4 +1,4 @@
-import { editor, Uri, IDisposable, MarkerSeverity } from 'monaco-editor-core';
+import { editor, Uri, IDisposable, MarkerSeverity } from 'monaco-editor';
 import { ParserError } from '@antlr-ts/parser-core';
 import { IWorker, WorkerAccessor } from './basicWorker'
 import { debounce, LanguageServiceDefaults } from './_.contribution';

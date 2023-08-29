@@ -5,7 +5,7 @@ import {
     Range,
     Position,
     CancellationToken,
-} from "monaco-editor-core";
+} from "monaco-editor";
 import { WorkerAccessor, IWorker } from "./basicWorker";
 
 export type CompletionTriggerCharacter = " " | "." | "$" | "!";

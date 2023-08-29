@@ -5,7 +5,7 @@ import {
 	modeConfigurationDefault,
 	registerLanguage
 } from '../../_.contribution';
-import { languages } from 'monaco-editor-core';
+import { languages } from 'monaco-editor';
 
 const languageId = 'flink';
 

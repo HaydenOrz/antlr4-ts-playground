@@ -1,4 +1,4 @@
-import * as monaco from "monaco-editor-core";
+import * as monaco from "monaco-editor";
 import { LanguageServiceDefaults } from './_.contribution';
 import { FlinkWorker } from './languages/flink/FlinkWorker';
 

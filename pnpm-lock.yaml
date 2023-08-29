@@ -17,10 +17,10 @@ importers:
   packages/monaco-languages:
     specifiers:
       '@antlr-ts/parser-core': workspace:../parser-core
-      monaco-editor-core: ^0.31.0
+      monaco-editor: 0.31.1
     dependencies:
       '@antlr-ts/parser-core': link:../parser-core
-      monaco-editor-core: 0.31.1
+      monaco-editor: 0.31.1
 
   packages/parser-core:
     specifiers:
@@ -40,7 +40,7 @@ importers:
       css-loader: ^6.7.1
       html-webpack-plugin: ^5.5.0
       mini-css-extract-plugin: ^2.6.0
-      monaco-editor-core: ^0.31.0
+      monaco-editor: ^0.31.1
       style-loader: ^3.3.1
       ts-loader: '9'
       util: ^0.12.5
@@ -51,7 +51,7 @@ importers:
       webpack-merge: ^5.2.0
     dependencies:
       '@antlr-ts/monaco-languages': link:../monaco-languages
-      monaco-editor-core: 0.31.1
+      monaco-editor: 0.31.1
     devDependencies:
       assert: 2.0.0
       css-loader: 6.7.3_webpack@5.75.0
@@ -3786,8 +3786,8 @@ packages:
       minimist: 1.2.8
     dev: true
 
-  /monaco-editor-core/0.31.1:
-    resolution: {integrity: sha512-JdwqSmTJP10bhb7qc94ehWX0C1D2R2rwCHfm+5Vd2Oh0dwjfeCAWHDelnTZ+BVbGPCb+7ZGHZvG+oYZHdmuemg==}
+  /monaco-editor/0.31.1:
+    resolution: {integrity: sha512-FYPwxGZAeP6mRRyrr5XTGHD9gRXVjy7GUzF4IPChnyt3fS5WrNxIkS8DNujWf6EQy0Zlzpxw8oTVE+mWI2/D1Q==}
     dev: false
 
   /mrmime/1.0.1:
