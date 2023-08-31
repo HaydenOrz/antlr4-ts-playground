@@ -11,11 +11,26 @@
             margin: 0;
             box-sizing: border-box;
         }
+        .wrapper {
+            width: 100vw;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: #eee;
+        }
+        #container {
+            height: 80vh;
+            width: 70vw;
+            border: 2px solid #ddd;
+        }
     </style>
 </head>
 <body>
-    <div style="border: 1px solid #DDD; padding:32px; width: 100%;">
-        <div id="container" style="height: 90vh; width: 100%; border: 1px solid #ddd;"></div>
+    <div class="wrapper">
+        <div 
+            id="container"
+        ></div>
     </div>
 </body>
 </html>

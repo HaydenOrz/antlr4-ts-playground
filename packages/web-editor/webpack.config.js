@@ -7,21 +7,10 @@ module.exports = {
     devtool: "source-map", //
     entry: {
         index: path.resolve( __dirname, './src/index.ts'),
-        'editor.worker': 'monaco-editor-core/esm/vs/editor/editor.worker.js',
-        'flink.worker': '@antlr-ts/monaco-languages/lib/languages/flink/flink.worker.js',
+
     },
     output: {
         globalObject: 'self',
-        filename: (chunkData) => {
-            switch (chunkData.chunk.name) {
-                case 'editor.worker':
-                    return 'editor.worker.js'
-                case 'flink.worker':
-                    return 'flink.worker.js'
-                default:
-                    return 'index.js'
-            }
-        },
         path: path.resolve(__dirname, './dist'),
     },
     resolve: {
@@ -33,7 +22,6 @@ module.exports = {
             assert: false,
         }
     },
-    // node: { module: 'empty', net: 'empty', fs: 'empty' },
     module: {
         rules: [
             {
@@ -62,3 +50,6 @@ module.exports = {
         progress: false,
     }
 }
+
+// 'editor.worker': 'monaco-editor/esm/vs/editor/editor.worker.js',
+// 'ts.worker': 'monaco-editor/esm/vs/language/typescript/ts.worker.js'
