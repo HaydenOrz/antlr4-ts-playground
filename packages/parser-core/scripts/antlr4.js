@@ -9,6 +9,7 @@ const entry = [
     'json',
     'calculator',
     'flinksql',
+    'selectStatement'
 ];
 
 entry.forEach((language) => {

@@ -4,13 +4,12 @@ import { getSuggestions } from "../parser/selectParser";
 describe('Test Select Parser', () => {
     const selectParser = new SelectParser();
 
-    test('parse sql', () => {
-        const parser = selectParser.createParser('SELECT id FRO');
+    test('validate sql', () => {
+        const { errors } = selectParser.parse('SELECT id FRO');
+        console.log(errors);
     })
 
-    test('parse sql', () => {
+    test('get suggestions', () => {
         getSuggestions('SELECT id FRO');
     })
-
-
 })

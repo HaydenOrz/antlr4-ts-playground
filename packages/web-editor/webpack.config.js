@@ -7,7 +7,9 @@ module.exports = {
     devtool: "source-map", //
     entry: {
         index: path.resolve( __dirname, './src/index.ts'),
-
+        'editor.worker': 'monaco-editor/esm/vs/editor/editor.worker.js',
+        'ts.worker': 'monaco-editor/esm/vs/language/typescript/ts.worker.js',
+        // 'flink.worker': '@antlr-ts/monaco-languages/lib/languages/flink/flink.worker.js',
     },
     output: {
         globalObject: 'self',
@@ -50,6 +52,3 @@ module.exports = {
         progress: false,
     }
 }
-
-// 'editor.worker': 'monaco-editor/esm/vs/editor/editor.worker.js',
-// 'ts.worker': 'monaco-editor/esm/vs/language/typescript/ts.worker.js'
