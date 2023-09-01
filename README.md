@@ -52,3 +52,16 @@ pnpm install
 
 - 功能：分析 sql 中的语法错误信息，并在错误的位置提供输入建议
 - 实现方式：antlr4 listener、 ANTLRErrorListener、antlr4-c3
+
+### SelectStatementParser
+
+- 功能：解析简单的 select sql 语句
+
+## packages/monaco-languages
+
+- 实现 flinkSQL 的 `高亮` 、`自动补全`、`飘红提示功能`
+- 引入 packages/parser-core 中的 flinkParser
+
+## packages/web-editor
+
+- 一个简单的 web-editor 的 demo
